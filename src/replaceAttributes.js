@@ -5,8 +5,8 @@ export default function replaceAttributes(data, attributes) {
         const extraction = item.regex.exec(data);
         return extraction ? transformData(extraction[0], item.transformation) : "";
     };
-    const hasMatch = (item) => Boolean(item.match);
+    const isTruthy = (match) => Boolean(match);
     const formatResult = (result, current) => result + " " + current;
 
-    return attributes.map(extractMatch).filter(hasMatch).reduce(formatResult);
+    return attributes.map(extractMatch).filter(isTruthy).reduce(formatResult);
 }
