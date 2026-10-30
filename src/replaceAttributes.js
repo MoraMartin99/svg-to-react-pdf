@@ -8,5 +8,5 @@ export default function replaceAttributes(data, attributes) {
     const isTruthy = (match) => Boolean(match);
     const formatResult = (result, current) => result + " " + current;
 
-    return attributes.map(extractMatch).filter(isTruthy).reduce(formatResult);
+    return attributes.map(extractMatch).filter(isTruthy).reduce(formatResult, "");
 }
