@@ -1,7 +1,7 @@
 export default function transformData(data, transformations = []) {
-    const applyTransformation = (result, { regex, replacement }) => {
-        return result.replaceAll(regex, replacement);
+    const applyTransformation = (result, transformation) => {
+        return transformation(result);
     };
 
-    return transformations.reduce(applyTransformation, data);
+    return transformations.reduce(applyTransformation, data).content;
 }

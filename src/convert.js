@@ -10,9 +10,9 @@ const newExt = "jsx";
 const getNewName = (path) => capitalized(basename(path, extname(path)));
 
 const convertFile = async (source, destination) => {
-    const data = await fs.readFile(source, { encoding: "utf8" });
+    const content = await fs.readFile(source, { encoding: "utf8" });
 
-    await fs.writeFile(destination, transformData(data, transformations));
+    await fs.writeFile(destination, transformData({ content, name: getNewName(source) }, transformations));
 };
 
 export default async function convert(source, destination) {
