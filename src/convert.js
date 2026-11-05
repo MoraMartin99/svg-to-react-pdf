@@ -4,8 +4,10 @@ import transformations from "./transformations.js";
 import isSvg from "./isSvg.js";
 import { basename, join, extname, format } from "node:path";
 import isFolder from "./isFolder.js";
+import capitalized from "./capitalized.js";
 
 const newExt = "jsx";
+const getNewName = (path) => capitalized(basename(path, extname(path)));
 
 const convertFile = async (source, destination) => {
     const data = await fs.readFile(source, { encoding: "utf8" });
@@ -16,7 +18,7 @@ const convertFile = async (source, destination) => {
 export default async function convert(source, destination) {
     if (await isFolder(source)) {
         const converterAdapter = (path) => {
-            const newPath = format({ dir: destination, base: `${basename(path, extname(path))}.${newExt}` });
+            const newPath = format({ dir: destination, base: `${getNewName(path)}.${newExt}` });
             return convertFile(path, newPath);
         };
         const getRelativePath = (path) => join(source, path);
