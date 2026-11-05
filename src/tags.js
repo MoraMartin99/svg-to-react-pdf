@@ -1,34 +1,67 @@
-export const svgTag = "svg";
-export const circleTag = "circle";
-export const clipPathTag = "clipPath";
-export const defsTag = "defs";
-export const ellipseTag = "ellipse";
-export const gTag = "g";
-export const lineTag = "line";
-export const linearGradientTag = "linearGradient";
-export const markerTag = "marker";
-export const pathTag = "path";
-export const polygonTag = "polygon";
-export const radialGradientTag = "radialGradient";
-export const rectTag = "rect";
-export const stopTag = "stop";
-export const textTag = "text";
-export const tspanTag = "tspan";
-export default {
-    svgTag,
-    circleTag,
-    clipPathTag,
-    defsTag,
-    ellipseTag,
-    gTag,
-    lineTag,
-    linearGradientTag,
-    markerTag,
-    pathTag,
-    polygonTag,
-    radialGradientTag,
-    rectTag,
-    stopTag,
-    textTag,
-    tspanTag,
-};
+import {
+    width,
+    height,
+    viewBox,
+    preserveAspectRatio,
+    style,
+    id,
+    cx,
+    cy,
+    r,
+    ry,
+    rx,
+    x1,
+    x2,
+    y1,
+    y2,
+    xlinkHref,
+    gradientTransform,
+    gradientUnits,
+    markerWidth,
+    markerHeight,
+    refX,
+    refY,
+    orient,
+    markerUnits,
+    d,
+    points,
+    fr,
+    fx,
+    fy,
+    x,
+    y,
+    offset,
+    stopColor,
+    stopOpacity,
+} from "./attributes.js";
+import presentationAttributes from "./presentationAttributes.js";
+
+export default Object.fromEntries(
+    [
+        ["svg", [width, height, viewBox, preserveAspectRatio, style]],
+        ["circle", [id, cx, cy, r, ...presentationAttributes]],
+        ["clipPath", [id]],
+        ["defs"],
+        ["ellipse", [cx, cy, ry, rx, id, ...presentationAttributes]],
+        ["g", [id, ...presentationAttributes]],
+        ["line", [id, x1, x2, y1, y2, ...presentationAttributes]],
+        [
+            "linearGradient",
+            [id, x1, x2, y1, y2, xlinkHref, gradientTransform, gradientUnits, ...presentationAttributes],
+        ],
+        [
+            "marker",
+            [id, viewBox, markerWidth, markerHeight, refX, refY, orient, markerUnits, ...presentationAttributes],
+        ],
+        ["path", [id, d, ...presentationAttributes]],
+        ["polygon", [id, points, ...presentationAttributes]],
+        [
+            "radialGradient",
+            [id, cx, cy, r, fr, fx, fy, xlinkHref, gradientTransform, gradientUnits, ...presentationAttributes],
+        ],
+        ["rect", [id, x, y, width, height, rx, ry, ...presentationAttributes]],
+        ["stop", [id, offset, stopColor, stopOpacity, ...presentationAttributes]],
+        ["text", [id, x, y, ...presentationAttributes]],
+        ["tspan", [id, x, y, ...presentationAttributes]],
+    ].map(([name, attributes]) => [name, { name, attributes }]),
+);
