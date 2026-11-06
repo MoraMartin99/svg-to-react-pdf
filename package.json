@@ -19,6 +19,7 @@
   "packageManager": "pnpm@12.14.0",
   "type": "module",
   "dependencies": {
-    "commander": "^15.0.0"
+    "commander": "^15.0.0",
+    "svgo": "^4.1.0"
   }
 }
