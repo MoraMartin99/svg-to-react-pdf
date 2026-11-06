@@ -1,4 +1,4 @@
-import toCamelCase from "./funcReplacements/toCamelCase.js";
+import toCamelCase from "./toCamelCase.js";
 
 function createAttrRegex(name) {
     return new RegExp(`${name}="[^"]+"`, "gm");

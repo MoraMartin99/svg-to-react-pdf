@@ -1,4 +1,4 @@
-import capitalized from "../capitalized.js";
+import capitalized from "./capitalized.js";
 
 function toCamelCase(value) {
     const separator = /-|:/gm;
