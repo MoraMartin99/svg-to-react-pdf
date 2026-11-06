@@ -12,7 +12,7 @@ export default function formatAsReactComponent(data) {
         content: `import { ${Object.values(tags).map(getTagName).filter(hasAMatch).map(capitalized).join(", ")} } from '${reactPdfDependencyPath}';
     
     export default function ${capitalized(data.name)}(){
-      ${data.content}
+      return (${data.content})
     }`,
     };
 }
