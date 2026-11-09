@@ -2,7 +2,7 @@ import tags from "./tags.js";
 import createTagReplacer from "./createTagReplacer.js";
 import createAttrsReplacer from "./createAttrsReplacer.js";
 import formatAsReactComponent from "./formatAsReactComponent.js";
-import optimize from "./optimize.js";
+import optimize from "./optimize/optimize.js";
 
 const createTransformations = (result, { name, attributes }) => {
     return attributes
