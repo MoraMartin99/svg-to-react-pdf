@@ -1,5 +1,6 @@
 import { optimize as externalOptimize } from "svgo";
 import { removeUsePlugin } from "./removeUsePlugin.js";
+import { wrapClipPathInDefPlugin } from "./wrapClipPathInDefPlugin.js";
 
 const config = {
     plugins: [
@@ -15,6 +16,7 @@ const config = {
         "convertStyleToAttrs",
         "removeRasterImages",
         removeUsePlugin,
+        wrapClipPathInDefPlugin,
     ],
 };
 
