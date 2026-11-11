@@ -2,7 +2,20 @@ import { optimize as externalOptimize } from "svgo";
 import { removeUsePlugin } from "./removeUsePlugin.js";
 
 const config = {
-    plugins: ["preset-default", "removeDimensions", "convertStyleToAttrs", "removeRasterImages", removeUsePlugin],
+    plugins: [
+        {
+            name: "preset-default",
+            params: {
+                overrides: {
+                    convertPathData: false,
+                },
+            },
+        },
+        "removeDimensions",
+        "convertStyleToAttrs",
+        "removeRasterImages",
+        removeUsePlugin,
+    ],
 };
 
 export default function optimize(data) {
