@@ -25,7 +25,7 @@ const fn = (root) => {
         cachedSearches.push(target);
         parentNode.children[parentNode.children.indexOf(node)] = {
             ...target,
-            attributes: { ...node.attributes, ...target.attributes, id: undefined },
+            attributes: { ...node.attributes, ...target.attributes, id: "" },
         };
     };
 
