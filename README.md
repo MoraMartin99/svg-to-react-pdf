@@ -1,4 +1,4 @@
-# svg-to-pdf-react 🔨
+# svg-to-react-pdf 🔨
 
 A simple CLI tool for converting svg files to [react-pdf](https://github.com/diegomura/react-pdf) components.
 
