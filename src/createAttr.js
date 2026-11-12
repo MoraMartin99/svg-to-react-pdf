@@ -1,7 +1,7 @@
 import toCamelCase from "./toCamelCase.js";
 
 function createAttrRegex(name) {
-    return new RegExp(`${name}="[^"]+"`, "gm");
+    return new RegExp(`(?<= )${name}="[^"]+"`, "gm");
 }
 
 function createAttrNameRegex(name) {
