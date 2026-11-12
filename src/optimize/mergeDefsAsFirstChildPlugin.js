@@ -1,12 +1,14 @@
+const defsName = "defs";
+
 const fn = (root) => {
-    const isDef = (node) => node.name === "def";
+    const isDefs = (node) => node.name === defsName;
     const isRootNode = (node) => node === root.children[0];
-    const defs = [];
+    const defsList = [];
 
     const onEnter = (node, parentNode) => {
-        if (!isDef(node)) return;
+        if (!isDefs(node)) return;
         const isTarget = (current) => current === node;
-        defs.push(node);
+        defsList.push(node);
         parentNode.children = parentNode.children.filter((child) => !isTarget(child));
     };
 
@@ -16,8 +18,8 @@ const fn = (root) => {
         node.children = [
             {
                 type: "element",
-                name: "def",
-                children: defs.flatMap(extractChildren),
+                name: defsName,
+                children: defsList.flatMap(extractChildren),
                 attributes: [],
             },
             ...node.children,
@@ -29,6 +31,6 @@ const fn = (root) => {
 
 export const mergeDefsAsFirstChildPlugin = {
     name: "mergeDefsAsFirstChildPlugin",
-    description: "Merges every def and sets it as the first child of svg",
+    description: "Merges every defs and sets it as the first child of svg",
     fn,
 };
