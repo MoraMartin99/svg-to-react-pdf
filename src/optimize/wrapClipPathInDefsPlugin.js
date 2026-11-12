@@ -1,14 +1,16 @@
+const defsName = "defs";
+
 const fn = () => {
     const isClipPath = (node) => node.name === "clipPath";
-    const isDef = (node) => node.name === "def";
+    const isDefs = (node) => node.name === defsName;
 
     const onEnter = (node, parentNode) => {
         if (!isClipPath(node)) return;
-        if (isDef(parentNode)) return;
+        if (isDefs(parentNode)) return;
 
         parentNode.children[parentNode.children.indexOf(node)] = {
             type: "element",
-            name: "def",
+            name: defsName,
             children: [{ ...node }],
             attributes: [],
         };
@@ -17,8 +19,8 @@ const fn = () => {
     return { element: { enter: onEnter } };
 };
 
-export const wrapClipPathInDefPlugin = {
-    name: "wrapClipPathInDefPlugin",
-    description: "Wraps every clipPath in a def (if it isn't already)",
+export const wrapClipPathInDefsPlugin = {
+    name: "wrapClipPathInDefsPlugin",
+    description: "Wraps every clipPath in a defs (if it isn't already)",
     fn,
 };
